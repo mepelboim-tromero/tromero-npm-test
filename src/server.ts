@@ -13,7 +13,7 @@ app.get('/', (_, res: Response) => {
   );
 });
 
-app.post('/tailor', async (req: Request, res: Response) => {
+app.post('/test', async (req: Request, res: Response) => {
   const { input } = req.body;
 
   const completion = await client.chat.completions.create({
