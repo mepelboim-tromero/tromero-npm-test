@@ -1,14 +1,16 @@
 import Tromero from 'tromero';
-import OpenAI from 'openai';
 
-export const client = new Tromero({
-  tromeroKey: process.env.TROMERO_API_KEY,
-});
+type Keys = {
+  tromeroKey?: string;
+  apiKey?: string;
+};
 
-// export const tromero = new Tromero({
-//   tromeroKey: process.env.TROMERO_API_KEY,
-//   apiKey: process.env.OPENAI_API_KEY,
-// });
+const tromeroKey = process.env.TROMERO_API_KEY || undefined;
+const apiKey = process.env.OPENAI_API_KEY || undefined;
 
-const key = process.env.OPENAI_API_KEY;
-export const openai = new OpenAI({ apiKey: key });
+// use only the keys that are defined and not empty
+const keys: Keys = {};
+if (tromeroKey) keys.tromeroKey = tromeroKey;
+if (apiKey) keys.apiKey = apiKey;
+
+export const client = new Tromero(keys);
