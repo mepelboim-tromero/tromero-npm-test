@@ -6,7 +6,7 @@ This repository contains a simple Express server that is used to test the Tromer
 
 - `/`: This endpoint provides an introduction to the application.
 
-- `POST /test`: To use this endpoint, you need to pass a prompt as the 'input' parameter.
+- `POST /test`: To use this endpoint, you need to pass a prompt as the 'input' parameter in the body of the request.
 
 ## Installation
 
