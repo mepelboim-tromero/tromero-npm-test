@@ -17,7 +17,6 @@ app.post('/tailor', async (req: Request, res: Response) => {
   const { input } = req.body;
 
   const completion = await client.chat.completions.create({
-    // model: 'july22-michael4',
     model: 'gpt-4o-mini',
     messages: [
       { role: 'system', content: 'You are a friendly chatbot.' },
@@ -28,7 +27,7 @@ app.post('/tailor', async (req: Request, res: Response) => {
 
     tags: ['testing-tags4'],
     fallbackModel: 'gpt-4o-mini',
-    // sars
+
     // saveData: true,
 
     // for streaming
@@ -42,17 +41,13 @@ app.post('/tailor', async (req: Request, res: Response) => {
 
   for await (const chunk of completion) {
     console.log(chunk.choices[0].delta.content);
-    // res.write(chunk.choices[0].delta.content);
     res.write(`data: ${chunk.choices[0].delta.content}\n\n`);
   }
-
   res.end();
 
   // for normal response
-
   // const content = completion.choices[0];
   // console.log(content);
-
   // res.json(completion.choices[0]);
 });
 

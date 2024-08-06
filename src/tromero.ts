@@ -5,8 +5,8 @@ type Keys = {
   apiKey?: string;
 };
 
-const tromeroKey = process.env.TROMERO_API_KEY || undefined;
-const apiKey = process.env.OPENAI_API_KEY || undefined;
+const tromeroKey = process.env.TROMERO_API_KEY;
+const apiKey = process.env.OPENAI_API_KEY;
 
 // use only the keys that are defined and not empty
 const keys: Keys = {};
