@@ -9,11 +9,11 @@ const port = 3000;
 
 app.get('/', (_, res: Response) => {
   res.send(
-    'APP to test the tromero NPM package, use POST: "/tailor" with a chat request as "input"'
+    'APP to test the tromero NPM package, use POST: "/test" with a prompt as "input" in the body of the request'
   );
 });
 
-app.post('/tailor', async (req: Request, res: Response) => {
+app.post('/test', async (req: Request, res: Response) => {
   const { input } = req.body;
 
   const completion = await client.chat.completions.create({
