@@ -19,3 +19,9 @@ npm i
 ## Configuration
 
 Make sure to have a Tromero key and/or an OpenAI API key and add them to a `.env` file. You can follow the example provided in the `.env.example` file.
+
+## To run the server
+
+```bash
+npx nodemon src/server.ts
+```
