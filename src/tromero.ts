@@ -1,7 +1,7 @@
 import Tromero from 'tromero';
 import OpenAI from 'openai';
 
-export const tromero = new Tromero({
+export const client = new Tromero({
   tromeroKey: process.env.TROMERO_API_KEY,
 });
 

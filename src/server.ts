@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import express, { Request, Response } from 'express';
-import { tromero, openai } from './tromero';
+import { client } from './tromero';
 
 const app = express();
 app.use(express.json());
@@ -16,38 +16,44 @@ app.get('/', (_, res: Response) => {
 app.post('/tailor', async (req: Request, res: Response) => {
   const { input } = req.body;
 
-  const completion = await tromero.chat.completions.create({
-    model: 'july22-michael4',
-    // model: 'gpt-4o-mini',
+  const completion = await client.chat.completions.create({
+    // model: 'july22-michael4',
+    model: 'gpt-4o-mini',
     messages: [
       { role: 'system', content: 'You are a friendly chatbot.' },
       { role: 'user', content: input },
     ],
     temperature: 0,
-    max_tokens: 100,
-    tags: ['testing-tags'],
+    max_tokens: 50,
+
+    tags: ['testing-tags4'],
     fallbackModel: 'gpt-4o-mini',
-    saveData: true,
+    // sars
+    // saveData: true,
 
     // for streaming
-    // stream: true,
+    stream: true,
   });
 
   // for streaming
-  // res.setHeader('Content-Type', 'text/event-stream');
-  // res.setHeader('Cache-Control', 'no-cache');
-  // res.setHeader('Connection', 'keep-alive');
+  res.setHeader('Content-Type', 'text/event-stream');
+  res.setHeader('Cache-Control', 'no-cache');
+  res.setHeader('Connection', 'keep-alive');
 
-  // for await (const chunk of completion) {
-  //   console.log(chunk.choices[0].delta.content);
-  //   res.write(`data: ${chunk.choices[0].delta.content}\n\n`);
-  // }
+  for await (const chunk of completion) {
+    console.log(chunk.choices[0].delta.content);
+    // res.write(chunk.choices[0].delta.content);
+    res.write(`data: ${chunk.choices[0].delta.content}\n\n`);
+  }
 
-  // res.end();
+  res.end();
 
   // for normal response
 
-  res.send(completion.choices[0]);
+  // const content = completion.choices[0];
+  // console.log(content);
+
+  // res.json(completion.choices[0]);
 });
 
 app.listen(port, () => {
