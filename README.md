@@ -38,6 +38,8 @@ Make sure to have a Tromero key and/or an OpenAI API key and add them to a `.env
 npm run dev
 ```
 
+The server will be running on `http://localhost:3000`.
+
 ## How to test the tromero NPM package locally with this server
 
 1. Go to the package directory and run the following command:
