@@ -6,7 +6,7 @@ This repository contains a simple Express server that is used to test the Tromer
 
 - `/`: This endpoint provides an introduction to the application.
 
-- `POST /test`: To use this endpoint, you need to pass a prompt as the 'messages' parameter in the body of the request.
+- `POST /test`: To use this endpoint, you need to pass an array of prompts (system, user) as the 'messages' parameter in the body of the request.
 
 - `POST /test-zod`: To test responses from openAI using zod for JSON schema validation. You need to pass a prompt as the 'question' parameter in the body of the request.
 
