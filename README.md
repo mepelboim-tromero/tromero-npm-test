@@ -40,7 +40,7 @@ npm run dev
 
 The server will be running on `http://localhost:3000`.
 
-## How to test the tromero NPM package locally with this server
+## How to test the Tromero NPM package locally with this server
 
 1. Go to the package directory and run the following command:
 
