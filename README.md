@@ -40,16 +40,16 @@ npm run dev
 
 ## How to test the tromero NPM package locally with this server
 
-A. Go to the package directory and run the following command:
+1. Go to the package directory and run the following command:
 
 ```bash
 npm link
 ```
 
-B. Go to the server directory and run the following command:
+2. Go to the server directory and run the following command:
 
 ```bash
 npm link tromero
 ```
 
-C. Now you can use the package in the server code.
+3. Now you can use the package in the server code.
